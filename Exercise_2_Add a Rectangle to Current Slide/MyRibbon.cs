@@ -1,72 +1,60 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using ExampleVSTO.CommonUtilities.Utility;
+using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Windows.Forms;
-using PowerPoint = Microsoft.Office.Interop.PowerPoint;
-using Office = Microsoft.Office.Core;
+using Exercise_2_Add_a_Rectangle_to_Current_Slide.Service;
 
 namespace Exercise_2_Add_a_Rectangle_to_Current_Slide
 {
     public partial class MyRibbon
     {
-        private void MyRibbon_Load(object sender,
-    RibbonUIEventArgs e)
+        private readonly Logger _logger = new Logger(typeof(MyRibbon));
+        private void MyRibbon_Load(object sender,RibbonUIEventArgs e)
         {
-           // _logger.Info("MyRibbon loaded successfully.");
+            _logger.Info("MyRibbon loaded successfully.");
         }
-        private void AddRectangular_Click(object sender, RibbonControlEventArgs e)
+        private void AddRectangular_Click(object sender , RibbonControlEventArgs e)
         {
+            _logger.Info("Add Rectangle button clicked.");
+
             try
             {
-                MessageBox.Show("Starting rectangle creation...");
+                RectangleService rectangleService = new RectangleService();
 
-                PowerPoint.Application app = Globals.ThisAddIn.Application;
+                BooleanResult<string> result = rectangleService.AddRectangleToCurrentSlide();
 
-                if (app.Presentations.Count == 0)
+                if (!result.Success)
                 {
-                    MessageBox.Show("No active presentation found.");
+                    _logger.Warn(
+                        result.Message);
+
+                    MessageBox.Show(
+                        result.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
                     return;
                 }
-                MessageBox.Show("Presentation validated.");
+                MessageBox.Show(
+                    result.Message,
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-                PowerPoint.DocumentWindow window = app.ActiveWindow;
-
-                if (window == null || window.View.Slide == null)
-                {
-                    MessageBox.Show("No active slide found.");
-                    return;
-                }
-                PowerPoint.Slide slide = window.View.Slide;
-                MessageBox.Show("Active slide validated.");
-
-                PowerPoint.Shape rect = slide.Shapes.AddShape(
-                        Office.MsoAutoShapeType.msoShapeRectangle,
-                        100,   
-                        100,   
-                        300,   
-                        100    
-                    );
-                MessageBox.Show("Rectangle added.");
- 
-                rect.Fill.ForeColor.RGB = System.Drawing.Color.LightBlue.ToArgb();
-                MessageBox.Show("Fill color applied.");
-
-                rect.Line.ForeColor.RGB = System.Drawing.Color.DarkBlue.ToArgb();
-                rect.Line.Weight = 2;
-                MessageBox.Show("Border applied.");
-  
-                rect.TextFrame.TextRange.Text = "Hello from VSTO Add-in";
-
-                rect.TextFrame.TextRange.Font.Size = 20;
-                rect.TextFrame.TextRange.Font.Bold = Office.MsoTriState.msoTrue;
-                MessageBox.Show("Text added.");
-
-                MessageBox.Show("Rectangle creation completed successfully.");
+                _logger.Info("Rectangle creation completed.");
             }
             catch (Exception ex)
             {
+                _logger.Error(
+                    "Unexpected error occurred in ribbon.",
+                    ex);
+
                 MessageBox.Show(
-                    "Error: " + ex.Message
-                );
+                    "Unexpected error occurred.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace ExampleVSTO.CommonUtilities.Utility
         {
             _className = type.Name;
 
-            _logFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Logs");
+            _logFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
 
             // Create folder if not exists
             if (!Directory.Exists(_logFolderPath))
@@ -22,7 +22,7 @@ namespace ExampleVSTO.CommonUtilities.Utility
                 Directory.CreateDirectory(_logFolderPath);
             }
             // Log file name based on current date
-            _logFilePath = Path.Combine(_logFolderPath,$"Log_{DateTime.Now:yyyyMMdd}.txt");
+            _logFilePath = Path.Combine(_logFolderPath, $"Log_{DateTime.Now:yyyyMMdd}.txt");
         }
         public void Info(string message)
         {
