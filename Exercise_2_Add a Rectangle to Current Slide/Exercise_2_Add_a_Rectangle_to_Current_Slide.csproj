@@ -182,6 +182,8 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="CommonUtilities\Utility\BooleanResult.cs" />
+    <Compile Include="CommonUtilities\Utility\Logger.cs" />
     <Compile Include="MyRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -212,6 +214,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Service\RectangleService.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
