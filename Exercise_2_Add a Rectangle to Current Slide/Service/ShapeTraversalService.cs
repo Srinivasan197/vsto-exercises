@@ -46,7 +46,6 @@ namespace Exercise_4_Group_Shape_Traversal.Service
                 {
                     _report.AppendLine($"{indent}Entering Group : {shape.Name}");
                     _report.AppendLine();
-
                     TraverseShapes(shape.GroupItems,level + 1);
                 }
             }

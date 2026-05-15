@@ -12,10 +12,8 @@ namespace Exercise_2_Add_a_Rectangle_to_Current_Slide
         {
             // Create Task Pane UserControl
             TaskPaneControl taskPaneControl = new TaskPaneControl();
-
             // Add Task Pane
             CustomTaskPane = this.CustomTaskPanes.Add(taskPaneControl,"Slide Information");
-
             // Initially hidden
             CustomTaskPane.Visible = false;
         }

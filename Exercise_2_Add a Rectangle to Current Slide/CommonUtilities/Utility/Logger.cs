@@ -9,7 +9,6 @@ namespace ExampleVSTO.CommonUtilities.Utility
         private readonly string _className;
         private readonly string _logFolderPath;
         private readonly string _logFilePath;
-
         public Logger(Type type)
         {
             _className = type.Name;
@@ -44,7 +43,6 @@ namespace ExampleVSTO.CommonUtilities.Utility
 
             WriteLog("ERROR", message);
         }
-
         public void Debug(string message)
         {
             WriteLog("DEBUG", message);

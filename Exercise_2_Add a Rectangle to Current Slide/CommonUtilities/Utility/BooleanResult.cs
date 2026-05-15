@@ -9,11 +9,8 @@ namespace ExampleVSTO.CommonUtilities.Utility
     public class BooleanResult<T>
     {
         public bool Success { get; set; }
-
         public string Message { get; set; }
-
         public T Result { get; set; }
-
         public static BooleanResult<T> SuccessResult(T result)
         {
             return new BooleanResult<T>

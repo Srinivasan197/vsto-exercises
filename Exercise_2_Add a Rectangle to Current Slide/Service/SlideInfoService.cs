@@ -6,8 +6,7 @@ namespace Exercise_5_Basic_Task_Pane.Service
 {
     public class SlideInfoService
     {
-        public BooleanResult<string> GetCurrentSlideInformation(
-            Slide currentSlide)
+        public BooleanResult<string> GetCurrentSlideInformation(Slide currentSlide)
         {
             try
             {
@@ -19,14 +18,12 @@ namespace Exercise_5_Basic_Task_Pane.Service
                         Message = "No active slide found."
                     };
                 }
-
                 string slideInformation =
                     $"Slide Index : {currentSlide.SlideIndex}" +
                     Environment.NewLine +
                     $"Slide Name : {currentSlide.Name}" +
                     Environment.NewLine +
                     $"Total Shapes : {currentSlide.Shapes.Count}";
-
                 return new BooleanResult<string>
                 {
                     Success = true,
