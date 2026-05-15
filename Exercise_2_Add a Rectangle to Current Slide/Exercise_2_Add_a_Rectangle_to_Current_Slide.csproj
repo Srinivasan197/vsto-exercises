@@ -205,6 +205,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TaskPaneControl.resx">
+      <DependentUpon>TaskPaneControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Exercise_2_Add a Rectangle to Current Slide_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -217,6 +220,13 @@
     <Compile Include="Service\RectangleService.cs" />
     <Compile Include="Service\ShapeDiagnosticService.cs" />
     <Compile Include="Service\ShapeTraversalService.cs" />
+    <Compile Include="Service\SlideInfoService.cs" />
+    <Compile Include="TaskPaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TaskPaneControl.Designer.cs">
+      <DependentUpon>TaskPaneControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>

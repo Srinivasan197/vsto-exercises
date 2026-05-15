@@ -1,4 +1,4 @@
-﻿using ExampleVSTO.CommonUtilities.Utility;
+using ExampleVSTO.CommonUtilities.Utility;
 using Exercise_2_Add_a_Rectangle_to_Current_Slide.Service;
 using Exercise_4_Group_Shape_Traversal.Service;
 using Microsoft.Office.Tools.Ribbon;
@@ -102,9 +102,7 @@ namespace Exercise_2_Add_a_Rectangle_to_Current_Slide
                     MessageBoxIcon.Error);
             }
         }
-        private void ShapeTraversal_Click(
-        object sender,
-        RibbonControlEventArgs e)
+        private void ShapeTraversal_Click(object sender,RibbonControlEventArgs e)
         {
             _logger.Info("Shape Traversal button clicked.");
 
@@ -150,6 +148,14 @@ namespace Exercise_2_Add_a_Rectangle_to_Current_Slide
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnShowTaskPane_Click(object sender, RibbonControlEventArgs e)
+        {
+            if (Globals.ThisAddIn.CustomTaskPane != null)
+            {
+                Globals.ThisAddIn.CustomTaskPane.Visible = !Globals.ThisAddIn.CustomTaskPane.Visible;
             }
         }
     }

@@ -1,29 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
-using PowerPoint = Microsoft.Office.Interop.PowerPoint;
-using Office = Microsoft.Office.Core;
+using Microsoft.Office.Tools;
+
 
 namespace Exercise_2_Add_a_Rectangle_to_Current_Slide
 {
     public partial class ThisAddIn
     {
-        private void ThisAddIn_Startup(object sender, System.EventArgs e)
+        // Global Task Pane reference
+        public CustomTaskPane CustomTaskPane;
+        private void ThisAddIn_Startup(object sender,EventArgs e)
         {
+            // Create Task Pane UserControl
+            TaskPaneControl taskPaneControl = new TaskPaneControl();
+
+            // Add Task Pane
+            CustomTaskPane = this.CustomTaskPanes.Add(taskPaneControl,"Slide Information");
+
+            // Initially hidden
+            CustomTaskPane.Visible = false;
         }
 
-        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
+        private void ThisAddIn_Shutdown(object sender,EventArgs e)
         {
+
         }
 
         #region VSTO generated code
+
         private void InternalStartup()
         {
-            this.Startup += new System.EventHandler(ThisAddIn_Startup);
-            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
-        }      
+            this.Startup +=
+                new EventHandler(ThisAddIn_Startup);
+
+            this.Shutdown +=
+                new EventHandler(ThisAddIn_Shutdown);
+        }
+
         #endregion
     }
 }
