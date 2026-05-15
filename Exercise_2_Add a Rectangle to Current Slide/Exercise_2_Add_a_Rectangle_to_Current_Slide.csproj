@@ -215,6 +215,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Service\RectangleService.cs" />
+    <Compile Include="Service\ShapeDiagnosticService.cs" />
+    <Compile Include="Service\ShapeTraversalService.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
