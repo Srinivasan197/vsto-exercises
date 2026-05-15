@@ -6,10 +6,12 @@ namespace Exercise_5_Basic_Task_Pane.Service
 {
     public class SlideInfoService
     {
+        private readonly Logger _logger = new Logger(typeof(SlideInfoService));
         public BooleanResult<string> GetCurrentSlideInformation(Slide currentSlide)
         {
             try
             {
+                _logger.Info("Loading current slide information.");
                 if (currentSlide == null)
                 {
                     return new BooleanResult<string>
@@ -24,6 +26,7 @@ namespace Exercise_5_Basic_Task_Pane.Service
                     $"Slide Name : {currentSlide.Name}" +
                     Environment.NewLine +
                     $"Total Shapes : {currentSlide.Shapes.Count}";
+                _logger.Info("Slide information loaded successfully.");
                 return new BooleanResult<string>
                 {
                     Success = true,
@@ -32,6 +35,7 @@ namespace Exercise_5_Basic_Task_Pane.Service
             }
             catch (Exception ex)
             {
+                _logger.Error("Error while loading slide information.",ex);
                 return new BooleanResult<string>
                 {
                     Success = false,

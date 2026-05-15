@@ -13,18 +13,21 @@ namespace Exercise_2_Add_a_Rectangle_to_Current_Slide.Service
         {
             try
             {
+                _logger.Info("Starting shape diagnostics export.");
                 Presentation presentation = Globals.ThisAddIn.Application.ActivePresentation;
-
                 if (presentation == null)
                 {
+                    _logger.Warn("No active presentation found.");
                     return BooleanResult<string>.FailResult("No active presentation found.");
                 }
                 StringBuilder report = new StringBuilder();
                 foreach (Slide slide in presentation.Slides)
                 {
+                    _logger.Info($"Processing Slide {slide.SlideIndex}");
                     report.AppendLine($"Slide {slide.SlideIndex}");
                     foreach (Shape shape in slide.Shapes)
                     {
+                        _logger.Info($"Reading Shape : {shape.Name}");
                         report.AppendLine($"Shape Name : {shape.Name}");
                         report.AppendLine($"Shape Type : {shape.Type}");
                         report.AppendLine($"Left       : {shape.Left}");
