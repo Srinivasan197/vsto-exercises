@@ -1,4 +1,4 @@
-﻿namespace Exercise_2_Add_a_Rectangle_to_Current_Slide
+namespace Exercise_2_Add_a_Rectangle_to_Current_Slide
 {
     partial class MyRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
     {
@@ -39,6 +39,7 @@
             this.AddRectangular = this.Factory.CreateRibbonButton();
             this.button1 = this.Factory.CreateRibbonButton();
             this.ShapeTraversal = this.Factory.CreateRibbonButton();
+            this.btnShowTaskPane = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             this.group1.Items.Add(this.AddRectangular);
             this.group1.Items.Add(this.button1);
             this.group1.Items.Add(this.ShapeTraversal);
+            this.group1.Items.Add(this.btnShowTaskPane);
             this.group1.Label = "group1";
             this.group1.Name = "group1";
             // 
@@ -75,6 +77,12 @@
             this.ShapeTraversal.Label = "ShapeTraversal";
             this.ShapeTraversal.Name = "ShapeTraversal";
             this.ShapeTraversal.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ShapeTraversal_Click);
+            // 
+            // btnShowTaskPane
+            // 
+            this.btnShowTaskPane.Label = "Show Task Pane";
+            this.btnShowTaskPane.Name = "btnShowTaskPane";
+            this.btnShowTaskPane.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnShowTaskPane_Click);
             // 
             // MyRibbon
             // 
@@ -97,6 +105,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton AddRectangular;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton ShapeTraversal;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnShowTaskPane;
     }
 
     partial class ThisRibbonCollection
